@@ -259,7 +259,9 @@ protected
     # Process the requested resource.
     case info[:mode]
       when :init_connect
-        print_status("#{cli.peerhost}:#{cli.peerport} (UUID: #{uuid.to_s}) Redirecting stageless connection from #{request_summary}")
+        time = Time.new
+        time = time.strftime("%Y-%m-%d %H:%M:%S")
+        print_status("#{time} #{cli.peerhost}:#{cli.peerport} (UUID: #{uuid.to_s}) Redirecting stageless connection from #{request_summary} to #{cli.localhost}:#{cli.localport}")
 
         # Handle the case where stageless payloads call in on the same URI when they
         # first connect. From there, we tell them to callback on a connect URI that
